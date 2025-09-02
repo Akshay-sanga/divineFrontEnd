@@ -1,0 +1,98 @@
+/* General FAQ Section Styling */
+.faq-section-custom {
+    padding: 40px 0; /* Adjust as needed */
+    background-color: #f8f8f8; /* Light background for the overall section */
+  }
+  
+  .faq-items-wrapper {
+    max-width: 800px; /* Limit width of FAQ items */
+    margin: 0 auto; /* Center the FAQ items */
+    display: grid;
+    gap: 15px; /* Space between FAQ items */
+  }
+  
+  /* Styling for each individual FAQ item (accordion-single-custom) */
+  .accordion-single-custom {
+    background-color: #fff; /* White background for inactive items */
+    border-radius: 8px; /* Slightly rounded corners */
+    overflow: hidden; /* Ensures content doesn't overflow rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  /* Styling for the active FAQ item */
+  .accordion-single-custom.active-faq-item {
+    background-color: #117658; /* Green background for active item, matching your image */
+    color: white; /* White text for active item */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Slightly more pronounced shadow for active */
+  }
+  
+  /* Header area (question and toggle button) */
+  .header-area-custom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px; /* Padding for the header */
+    cursor: pointer; /* Indicates it's clickable */
+  }
+  
+  .accordion-single-custom.active-faq-item .header-area-custom {
+      padding-bottom: 10px; /* Reduce padding to make space for the line */
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* White separator line */
+  }
+  
+  
+  .question-text {
+    font-size: 20px; /* Font size for the question */
+    font-weight: 700; /* Bold font */
+    margin: 0; /* Remove default margin */
+    flex-grow: 1; /* Allows question to take available space */
+    color: #333; /* Dark text for inactive questions */
+  }
+  
+  .accordion-single-custom.active-faq-item .question-text {
+    color: white; /* White text for active question */
+  }
+  
+  
+  .toggle-button-custom {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex; /* To center the icon */
+    align-items: center;
+    justify-content: center;
+    color: #333; /* Dark color for the plus icon when inactive */
+  }
+  
+  /* Styling for the content area (answer) */
+  .content-area-custom {
+    padding: 0px 25px 20px 25px; /* Padding for the answer */
+    /* These transitions are for smooth show/hide effects, requires some JS for height animation */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+  }
+  
+  .accordion-single-custom.active-faq-item .content-area-custom {
+    max-height: 200px; /* Or a value large enough to fit your longest answer */
+    /* A more robust solution might measure content height for a smoother animation */
+  }
+  
+  
+  .answer-text {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    color: #555; /* Slightly lighter text for answers */
+  }
+  
+  .accordion-single-custom.active-faq-item .answer-text {
+    color: #e0e0e0; /* Lighter white for answer text in active state */
+  }
+  
+  /* Ensure the plus icon is styled correctly based on the active state */
+  .toggle-button-custom svg {
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
