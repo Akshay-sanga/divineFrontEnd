@@ -171,7 +171,7 @@ const HomePage = () => {
         {/* banner section end */}
 
         {/* About Us start */}
-        <section className="about-us position-relative pt-120 pb-120">
+        <section className="AbStartSection position-relative pt-120 pb-120">
           <div className="abs-area pe-none">
             <div className="item position-absolute d-none d-lg-block end-0 top-0 pt-12">
               <img src="assets/images/shape/about-shape-1.png" alt="icon" />
@@ -195,34 +195,41 @@ const HomePage = () => {
               </div>
             </div>
             <div className="row gy-10 gy-md-0 justify-content-between">
-              <div className="d-grid gap-3 gap-md-4 pb-120">
-                <div className="n3-color"
-                  dangerouslySetInnerHTML={{
-                    __html: filterseason?.season_about,
-                  }}
-                />
+              <div className='AboutSectionDesp' >
 
-              </div>
-              <div className="col-md-6 pe-0 pe-lg-20 order-1 order-lg-0">
-                <div className="image-area circle-text-bg d-center position-relative">
-                  <div className=" object-one">
-                    <img
-                      src="assets/images/about-us-img-1.webp"
-                      className="w-100 mt-6 mt-lg-20 ms-4 ms-lg-20 circle-img"
-                      alt="image"
-                    />
-                  </div>
+                <div className="d-grid gap-3 gap-md-4 ">
+                  <div className="n3-color"
+                    dangerouslySetInnerHTML={{
+                      __html: filterseason?.season_about,
+                    }}
+                  />
 
                 </div>
               </div>
-              <div className="col-md-6 ps-3 ps-lg-20 overflow-hidden">
 
-                <div className=" reveal-overlay first-item">
-                  <img
-                    src="assets/images/about-us-img-2.webp"
-                    className="w-100"
-                    alt="img"
-                  />
+              <div className='AboutSectionImages'>
+
+                <div className="col-md-6 pe-0 pe-lg-20 order-1 order-lg-0">
+                  <div className="image-area circle-text-bg d-center position-relative">
+                    <div className=" object-one">
+                      <img
+                        src="assets/images/about-us-img-1.webp"
+                        className="w-100 mt-6 mt-lg-20 ms-4 ms-lg-20 circle-img"
+                        alt="image"
+                      />
+                    </div>
+
+                  </div>
+                </div>
+                <div className="col-md-6 ps-3 ps-lg-20 overflow-hidden">
+
+                  <div className=" reveal-overlay first-item">
+                    <img
+                      src="assets/images/about-us-img-2.webp"
+                      className="w-100"
+                      alt="img"
+                    />
+                  </div>
                 </div>
               </div>
             </div>

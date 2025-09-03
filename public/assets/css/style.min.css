@@ -48,21 +48,39 @@
 
 @keyframes waveGradient {
     0% {
-      background-position: 0% 50%;
+        background-position: 0% 50%;
     }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
 
-  
-  
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+
 
 .display-one {
     font-size: 120px
+}
+
+.AboutSectionDesp {
+    height: max-content;
+}
+
+.AboutSectionImages {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(var(--n2), 1);
+}
+
+@media(max-width: 499px) {
+    .AbStartSection {
+        padding-bottom: 30px !important;
+    }
 }
 
 @media(max-width: 1499px) {
