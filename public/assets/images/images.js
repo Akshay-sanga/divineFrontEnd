@@ -9,17 +9,17 @@ import logoText from './logo-text.png';
 import footerShape1 from './shape/footer-shape-1.webp';
 import packagesShape1 from './shape/packages-shape-1.webp';
 import packagesShape2 from './shape/packages-shape-2.webp';
-import logo from './logoDivine.jpeg';
+import logo from './divine-logo.png';
 
 
-const images={
+const images = {
     videobg2,
     fav,
     logoText,
     videobg1,
     logo
 }
-const shape={
+const shape = {
     reviewshape1,
     reviewshape2,
     faqshape3,
@@ -28,11 +28,11 @@ const shape={
     packagesShape2
 }
 
-const icon={
+const icon = {
     qouteIcon
 }
 
 
 export {
-    shape,icon,images
+    shape, icon, images
 }

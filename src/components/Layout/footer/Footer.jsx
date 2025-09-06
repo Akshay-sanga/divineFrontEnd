@@ -28,15 +28,9 @@ const Footer = () => {
                   className="nav-brand d-flex justify-content-center justify-content-md-end gap-2"
                 >
                   <span className="d-center">
-                    <img src={images.logo} alt="fav" style={{ width: '80px' }} />
+                    <img src={images.logo} alt="fav" style={{ width: '150px' }} />
                   </span>
-                  {/* <span className="d-center">
-                    <img
-                      src={images.logoText}
-                      className="logo"
-                      alt="logo"
-                    />
-                  </span> */}
+
                 </Link>
               </div>
               <div className="col-md-6 cus-border border-start border-end b-third py-8 py-md-20">
@@ -103,29 +97,9 @@ const Footer = () => {
               <div className="single-box form-area">
                 <h5 className="mb-3 mb-md-4 n1-color">About Us</h5>
                 <p className="n1-color">
-                  Contacting Hunar Sangeet Mahavidyalaya directly, especially the Faridabad center (or the one near Vasant Kunj, if applicable). They may provide details
-                  Whether "Hunar Voice of India" is an event they organize.
+                  Hunar Voice of India is a unique Digital + On-Ground Singing Reality Show designed to discover and nurture raw musical talent across the nation. Unlike traditional talent shows, Hunar Voice of India blends online accessibility with offline performance exposure, giving every aspiring singer a fair chance to shine.
                 </p>
-                {/* <form className="mt-4 mt-md-6" action="#">
-              <div className="input-area transition p6-bg-color p-1 p-md-2 d-center gap-4 justify-content-between gap-4">
-                <div className="w-100 d-center gap-2 justify-content-start ps-3 ps-md-4 py-2">
-                  <div className="d-center n1-color fs-five">
-                    <i className="ph ph-envelope-simple" />
-                  </div>
-                  <input
-                    type="text"
-                    placeholder="Email address"
-                    className="w-100 n1-color"
-                  />
-                </div>
-                <button className="form-btn box-style box-second second-alt box-area box-four transition n1-bg-color d-center cus-border border b-fifth">
-                  <span className="d-center p2-color fs-four">
-                 
-                    <ArrowRight />
-                  </span>
-                </button>
-              </div>
-            </form> */}
+
               </div>
             </div>
             <div className="col-6 col-md-4 col-lg-2 footer-links d-flex justify-content-start justify-content-lg-center order-1 order-md-0">
@@ -157,14 +131,6 @@ const Footer = () => {
                     </Link>
                   </li>
 
-                  {/* <li>
-                <Link
-                  to={'contact'}
-                  className="d-center justify-content-start transition n1-color position-relative"
-                >
-                  Contact
-                </Link>
-              </li> */}
                 </ul>
               </div>
             </div>
@@ -204,21 +170,7 @@ const Footer = () => {
               <div className="single-box address">
                 <h5 className="mb-4 mb-md-6 n1-color">Address</h5>
                 <ul className="d-grid gap-3 gap-md-4">
-                  {/* <li className="d-flex align-items-center gap-3">
-                <span className="box-area d-center rounded-circle n1-2nd-bg-color n1-color fs-six box-area box-three">
-                
-                  <Envelope />
-                </span>
-                <span className="n1-color">
-                  <a
-                    href="mailto:bmhunar@gmail.com"
-                    className="__cf_email__"
-                    data-cfemail="0c697a696268634c69746d617c6069226f6361"
-                  >
-                    bmhunar@gmail.com
-                  </a>
-                </span>
-              </li> */}
+
                   <li className="d-flex align-items-center gap-3">
                     <span className="box-area d-center rounded-circle n1-2nd-bg-color n1-color fs-six box-area box-three">
                       {/* <i className="ph ph-map-pin" /> */}
@@ -248,7 +200,7 @@ const Footer = () => {
               <div className="col-lg-12">
                 <div className="copyright text-center">
                   <p className="n1-color">
-                    © <span className="currentYear n1-color" /> Divine Voice of India.
+                    © <span className="currentYear n1-color" /> Hunar Voice of India.
                     All Rights Reserved
                   </p>
                 </div>

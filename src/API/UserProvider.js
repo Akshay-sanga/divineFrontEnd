@@ -1,7 +1,7 @@
 import axios from "axios";
 import api from "./axioxConfig";
-const API_BASE_URL = "https://test.hunardvi.com/api";
-// const API_BASE_URL = "http://127.0.0.1:8000/api";
+// const API_BASE_URL = "https://test.hunardvi.com/api";
+const API_BASE_URL = "http://127.0.0.1:8000/api";
 
 // season api 
 export const homeData = async () => {
@@ -122,7 +122,7 @@ export const userloginData = async (userLogin) => {
 // Payment Varrify Api Response
 export const paymentverify = async (paymentinfo) => {
   try {
-    const response =await axios.post(`https://test.hunardvi.com/api/verify-payment`, paymentinfo);
+    const response = await axios.post(`https://test.hunardvi.com/api/verify-payment`, paymentinfo);
     console.log('Payment Verify API Response:', response.data); // Debugging log
     return response.data;
   } catch (error) {

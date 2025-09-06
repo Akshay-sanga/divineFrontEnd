@@ -13,7 +13,7 @@ const Header = () => {
     //     }
     // })
     const [openclass, setOpenclass] = useState(false);
-      const [dropdown,setDropdown] =useState(false);
+    const [dropdown, setDropdown] = useState(false);
     const [scrollY, setScrollY] = useState(false);
     const handleScroll = () => {
         if (window.scrollY > 50) {
@@ -34,7 +34,7 @@ const Header = () => {
         setOpenclass(!openclass)
     }
 
-     const Dropdown = () => {
+    const Dropdown = () => {
         setDropdown(!dropdown)
     }
 
@@ -48,8 +48,8 @@ const Header = () => {
                     <div className="main-navbar px-0 px-xl-8">
                         <nav className="navbar-custom">
                             <div className="d-flex align-items-center justify-content-between">
-                                <Link  to={'/'} className="nav-brand d-block d-lg-none">
-                                    <img className="d-block" src={images.logo} alt="logo"  style={{width:'80px',margin:'0px 10px'}} />
+                                <Link to={'/'} className="nav-brand d-block d-lg-none">
+                                    <img className="d-block" src={images.logo} alt="logo" style={{ width: '100px', margin: '0px 10px' }} />
                                 </Link>
                                 <div className="d-flex gap-6">
                                     <button
@@ -64,10 +64,10 @@ const Header = () => {
                                     </button>
                                 </div>
                             </div>
-                            <div className="navbar-toggle-item " style={{display:openclass ? 'block' : 'none'}}>
+                            <div className="navbar-toggle-item " style={{ display: openclass ? 'block' : 'none' }}>
                                 <div className="d-flex gap-5 flex-column flex-lg-row align-items-start align-items-lg-center justify-content-between mt-5 mt-lg-0">
                                     <Link
-                                         to={'/'}
+                                        to={'/'}
                                         className="navbar-brand logo d-none d-lg-block d-xl-none"
                                     >
                                         <img className="w-100" src={images.fav} alt="logo" />
@@ -115,14 +115,14 @@ const Header = () => {
 
                                         <li className="menu-item position-relative">
                                             <button
-                                            onClick={Dropdown}
+                                                onClick={Dropdown}
                                                 className={`position-relative pe-5 z-1 slide-second text-uppercase slide-vertical ${dropdown ? 'Dropdown' : ''}`}
                                                 data-splitting=""
                                                 style={{ color: 'white' }}
                                             >
                                                 Pages
                                             </button>
-                                            <ul className="sub-menu n2-bg-color p-lg-5" style={{display: dropdown ? 'block' : 'none'}}>
+                                            <ul className="sub-menu n2-bg-color p-lg-5" style={{ display: dropdown ? 'block' : 'none' }}>
                                                 <li className="menu-link py-1">
                                                     <Link to={'/gallery'}
                                                         className=" slide-second text-uppercase slide-horizontal"
@@ -144,7 +144,7 @@ const Header = () => {
                                                 </li> */}
                                                 <li className="menu-link py-1">
                                                     <Link to={'/videos'}
-                                                     
+
                                                         className=" slide-second text-uppercase slide-horizontal"
                                                         data-splitting=""
                                                         style={{ color: 'white' }}
@@ -196,7 +196,7 @@ const Header = () => {
 
                                         <div className="single-item d-none d-lg-block">
                                             <Link to={'/audition-form'}
-                                                
+
                                                 className="box-style box-second first-alt d-center gap-2 py-2 py-md-3 px-3 px-md-6 px-xl-9"
                                             >
                                                 <span className="fs-seven">Apply for Season</span>

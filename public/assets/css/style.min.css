@@ -3858,7 +3858,30 @@ iframe {
 }
 
 .banner-section.index-two .slide-single {
-    padding: 275px 0
+    padding: 275px 0;
+
+}
+
+.sliderImage {
+    width: 100%;
+    height: 768px;
+    object-fit: cover;
+}
+
+@media(max-width: 768px) {
+    .sliderImage {
+        width: 100%;
+        height: 600px;
+        padding-top: 100px;
+    }
+}
+
+@media(max-width: 500px) {
+    .sliderImage {
+        width: 100%;
+        height: 400px;
+        padding-top: 100px;
+    }
 }
 
 @media(max-width: 1600px) {

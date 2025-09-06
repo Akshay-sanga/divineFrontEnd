@@ -29,14 +29,12 @@ const HomePage = () => {
     setLoading(true);
     try {
       const response = await dispatch(getalldataslice()).unwrap();
-      console.log('response', response)
       if (response.status === 200) {
         const sliderData = response.slider;
         setSlider(sliderData);
         const filterData = response.season.filter((item) => item.type === 'new')
         setHomeData(response);
         const descSeason = response.season.slice().reverse();
-        console.log('descSeason', descSeason)
         setSeason(descSeason);
         setFilterSeason({
           season_name: filterData[0]?.season_name || 'Default Season',
@@ -140,21 +138,8 @@ const HomePage = () => {
                       <div className="slide-single ps-0 mt-2 mb-0 mb-lg-2 py-0 position-relative  align-items-center">
                         <div className="banner-img pe-none position-absolute start-0 end-0 z-0">
                         </div>
-                        <img src={slider?.image} className="max-un" alt="image" />
-                        {/* <div className="content-area row z-1">
-                          <div className="col-md-5">
-                            <p className="n1-color fw-bolder text-uppercase mb-4 mb-md-6">Building Bridges to Prosperity</p>
-                            <h2 className="display-one fw-bolder n1-color text-uppercase" style={{ opacity: '0' }}>Connect. Adjuvant. Succeed.</h2>
-                            <div className="btn-area mt-4 mt-md-8">
-                              <Link to={'/'} className="d-center n1-color d-inline-flex gap-1">
-                                <span className="n1-color">Learn More</span>
-                                <span className="d-center fs-five n1-color">
-                                  <i className="ph ph-arrow-up-right" />
-                                </span>
-                              </Link>
-                            </div>
-                          </div>
-                        </div> */}
+                        <img src={slider?.image} className="max-un sliderImage" alt="image" />
+
                       </div>
                     </SwiperSlide>
                   ))
@@ -197,7 +182,7 @@ const HomePage = () => {
             <div className="row gy-10 gy-md-0 justify-content-between">
               <div className='AboutSectionDesp' >
 
-                <div className="d-grid gap-3 gap-md-4 ">
+                <div className="d-grid gap-3 gap-md-4 mb-6">
                   <div className="n3-color"
                     dangerouslySetInnerHTML={{
                       __html: filterseason?.season_about,
@@ -207,33 +192,34 @@ const HomePage = () => {
                 </div>
               </div>
 
-              <div className='AboutSectionImages'>
 
-                <div className="col-md-6 pe-0 pe-lg-20 order-1 order-lg-0">
-                  <div className="image-area circle-text-bg d-center position-relative">
-                    <div className=" object-one">
-                      <img
-                        src="assets/images/about-us-img-1.webp"
-                        className="w-100 mt-6 mt-lg-20 ms-4 ms-lg-20 circle-img"
-                        alt="image"
-                      />
-                    </div>
-
-                  </div>
-                </div>
-                <div className="col-md-6 ps-3 ps-lg-20 overflow-hidden">
-
-                  <div className=" reveal-overlay first-item">
-                    <img
-                      src="assets/images/about-us-img-2.webp"
-                      className="w-100"
-                      alt="img"
-                    />
-                  </div>
-                </div>
-              </div>
             </div>
 
+          </div>
+          <div className='AboutSectionImages'>
+
+            <div className="col-md-6 pe-0 pe-lg-20 order-1 order-lg-0">
+              <div className="image-area circle-text-bg d-center position-relative">
+                <div className=" object-one">
+                  <img
+                    src="assets/images/about-us-img-1.webp"
+                    className="w-100 mt-6 mt-lg-20 ms-4 ms-lg-20 circle-img"
+                    alt="image"
+                  />
+                </div>
+
+              </div>
+            </div>
+            <div className="col-md-6 ps-3 ps-lg-20 overflow-hidden">
+
+              <div className=" reveal-overlay first-item">
+                <img
+                  src="assets/images/about-us-img-2.webp"
+                  className="w-100"
+                  alt="img"
+                />
+              </div>
+            </div>
           </div>
         </section>
         {/* About Us end */}
@@ -414,6 +400,7 @@ const HomePage = () => {
                   <div className="swiper-wrapper">
 
                     {/* Testimonial slider */}
+
                     {
                       loading ? (
                         <p>Content is loading. Please wait...</p>
@@ -441,27 +428,7 @@ const HomePage = () => {
                                         alt="Profile"
                                       />
                                     </li>
-                                    {/* <li className="rounded-circle ms-n4">
-                                      <img
-                                        className="cus-border border border-2 b-fifth rounded-circle"
-                                        src="assets/images/user-img-6.webp"
-                                        alt="Profile"
-                                      />
-                                    </li>
-                                    <li className="rounded-circle ms-n4">
-                                      <img
-                                        className="cus-border border border-2 b-fifth rounded-circle"
-                                        src="assets/images/user-img-7.webp"
-                                        alt="Profile"
-                                      />
-                                    </li>
-                                    <li className="rounded-circle ms-n4">
-                                      <img
-                                        className="cus-border border border-2 b-fifth rounded-circle"
-                                        src="assets/images/user-img-8.webp"
-                                        alt="Profile"
-                                      />
-                                    </li> */}
+
                                   </ul>
                                 </div>
 
@@ -480,57 +447,7 @@ const HomePage = () => {
                         ))
                     }
 
-                    {/* <div className="swiper-slide">
-                      <div className="single-item  reveal-object object-one">
-                        <div className="box-area">
-                          <img src="assets/images/icon/quote-icon.webp" alt="image" />
-                        </div>
-                        <div className="d-center flex-wrap gap-4 justify-content-between">
-                          <div className="text-area">
-                            <a href="javascript:void(0)">
-                              <h5 className="mb-1 n2-color">Kane Williamson</h5>
-                            </a>
-                            <span className="n3-color fs-ten">CEO, Tech Founder</span>
-                          </div>
-                          <ul className="d-center justify-content-end mb-2 ms-4">
-                            <li className="rounded-circle ms-n4">
-                              <img
-                                className="cus-border border border-2 b-fifth rounded-circle"
-                                src="assets/images/user-img-5.webp"
-                                alt="Profile"
-                              />
-                            </li>
-                            <li className="rounded-circle ms-n4">
-                              <img
-                                className="cus-border border border-2 b-fifth rounded-circle"
-                                src="assets/images/user-img-6.webp"
-                                alt="Profile"
-                              />
-                            </li>
-                            <li className="rounded-circle ms-n4">
-                              <img
-                                className="cus-border border border-2 b-fifth rounded-circle"
-                                src="assets/images/user-img-7.webp"
-                                alt="Profile"
-                              />
-                            </li>
-                            <li className="rounded-circle ms-n4">
-                              <img
-                                className="cus-border border border-2 b-fifth rounded-circle"
-                                src="assets/images/user-img-8.webp"
-                                alt="Profile"
-                              />
-                            </li>
-                          </ul>
-                        </div>
-                        <p className="n3-color fw-mid fs-five my-6 my-md-10">
-                          "Partnering with evendo has been a game changer for our
-                          company. Their expert guidance has streamlined our processes
-                          and significantly enhanced our efficiency. We experienced a
-                          remarkable 30% rise in productivity in just half a year!"
-                        </p>
-                      </div>
-                    </div> */}
+
                   </div>
                 </div>
                 <span className="position-relative d-center cus-border border-bottom b-second" />

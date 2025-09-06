@@ -17,17 +17,17 @@ const CommonHeader = () => {
     return (
         <>
             {/* header-section start */}
-            <header className="header-section index-two n1-bg-color py-4 px-2 px-xl-6" >
+            <header className="header-section index-two n1-bg-color py-4 px-2 px-xl-6" style={{ backgroundColor: 'rgba(var(--n2), 1)' }} >
                 <div className="container-fluid">
                     <div className="main-navbar px-0 px-xl-4 px-xxl-8">
                         <nav className="navbar-custom">
                             <div className="d-flex align-items-center justify-content-between">
                                 <Link
-                                     to={'/'}
+                                    to={'/'}
                                     className="nav-brand d-flex align-items-center gap-2 d-lg-none"
                                 >
-                                    <img src={images.logo} alt="logo"  style={{width:'80px',margin:'0px 10px'}} />
-                                    {/* <img src={images.logoText} alt="logo" /> */}
+                                    <img src={images.logo} alt="logo" style={{ width: '100px', margin: '0px 10px' }} />
+
                                 </Link>
                                 <div className="d-flex gap-6">
                                     <button
@@ -46,23 +46,19 @@ const CommonHeader = () => {
                                 <div className="d-flex gap-5 flex-column flex-lg-row align-items-start align-items-lg-center justify-content-between mt-5 mt-lg-0">
                                     <div className="d-center gap-10 gap-md-15 nav-logo">
                                         <Link to={'/'}
-                                            
+
                                             className="navbar-brand logo d-none d-lg-flex d-xl-flex d-lg-flex gap-2 align-items-center"
                                         >
-                                            <img src={images.logo} alt="logo" style={{width:'60px'}} />
-                                            {/* <img
-                                                src={images.logoText}
-                                                className="d-none d-md-none d-xl-flex"
-                                                alt="logo"
-                                            /> */}
+                                            <img src={images.logo} alt="logo" style={{ width: '100px', margin: '0px 10px' }} />
+
                                         </Link>
                                         <ul className="custom-nav d-lg-flex d-grid gap-3 gap-lg-4 order-1 order-xxl-0">
                                             <li className="menu-item position-relative">
 
                                                 <Link to={'/'}
+                                                    style={{ color: 'white' }}
+                                                    className=" slide-twelfth text-uppercase slide-horizontal"
 
-                                                    className="n2-color slide-twelfth text-uppercase slide-horizontal"
-                                                    data-splitting=""
                                                 >
                                                     Home
                                                 </Link>
@@ -74,8 +70,9 @@ const CommonHeader = () => {
 
                                                 <Link to={'/about-us'}
 
-                                                    className="n2-color slide-twelfth text-uppercase slide-horizontal"
-                                                    data-splitting=""
+                                                    style={{ color: 'white' }}
+                                                    className=" slide-twelfth text-uppercase slide-horizontal"
+
                                                 >
                                                     About us
                                                 </Link>
@@ -86,8 +83,9 @@ const CommonHeader = () => {
 
 
                                                 <Link to={'/all-season'}
-                                                    className="n2-color slide-twelfth text-uppercase slide-horizontal"
-                                                    data-splitting=""
+                                                    style={{ color: 'white' }}
+                                                    className=" slide-twelfth text-uppercase slide-horizontal"
+
                                                 >
                                                     Seasons
                                                 </Link>
@@ -97,8 +95,10 @@ const CommonHeader = () => {
                                             <li className="menu-item position-relative">
                                                 <button
                                                     onClick={Dropdown}
-                                                    className={`position-relative pe-5 z-1 slide-twelfth text-uppercase slide-vertical ${dropdown ? 'Dropdown' : ''}`}
-                                                    data-splitting
+                                                    style={{ color: 'white' }}
+
+                                                    className={`position-relative pe-5 z-1  text-uppercase slide-vertical ${dropdown ? 'Dropdown' : ''}`}
+
                                                 >
 
                                                     Pages
@@ -111,61 +111,33 @@ const CommonHeader = () => {
                                                             data-splitting
                                                         >
 
-                                                          Gallery 
+                                                            Gallery
                                                         </Link>
                                                     </li>
-                                                    
+
                                                     <li className="menu-link py-1">
                                                         <Link to={'/videos'}
-                                                           
+
                                                             className="n2-color slide-twelfth text-uppercase slide-horizontal"
                                                             data-splitting=""
                                                         >
                                                             All Videos
                                                         </Link>
                                                     </li>
-                                                    {/* <li className="menu-link py-1">
-                                                        <Link to={'/sponsor'}
-                                                            className="n2-color slide-twelfth text-uppercase slide-horizontal"
-                                                            data-splitting=""
-                                                        >
-                                                            sponsor
-                                                        </Link>
-                                                    </li>
-                                                    <li className="menu-link py-1">
-                                                        <Link to={'/speaker'}
-                                                            className="n2-color slide-twelfth text-uppercase slide-horizontal"
-                                                            data-splitting=""
-                                                        >
-                                                            Speaker
-                                                        </Link>
-                                                    </li>
-                                                    <li className="menu-link py-1">
-                                                        <Link to={'/testimonial'}
-                                                            className="n2-color slide-twelfth text-uppercase slide-horizontal"
-                                                            data-splitting=""
-                                                        >
-                                                            Testimonial
-                                                        </Link>
-                                                    </li> */}
+
                                                 </ul>
                                             </li>
-                                            {/* <li className="menu-link">
-                                                <Link to={'/contact'}
-                                                    className="n2-color slide-second text-uppercase slide-vertical"
-                                                    data-splitting=""
-                                                >
-                                                    Contact
-                                                </Link>
-                                            </li> */}
 
                                             <li class="menu-link">
-                                                <Link to={'/contact'} class="n2-color slide-twelfth text-uppercase slide-vertical" data-splitting>Contact</Link>
+                                                <Link to={'/contact'}
+                                                    style={{ color: 'white' }}
+                                                    className=" slide-twelfth text-uppercase slide-horizontal">
+                                                    Contact</Link>
                                             </li>
                                         </ul>
                                     </div>
                                     <div className="right-area sidebar-items position-relative d-flex gap-3 gap-md-5 align-items-center">
-                                       
+
                                         <div className="single-item d-none d-lg-block">
                                             <Link to={'/audition-form'}
 
@@ -175,7 +147,7 @@ const CommonHeader = () => {
                                             </Link>
                                         </div>
                                         <div className="single-item target-item">
-                                            <div className="cmn-head d-center">
+                                            {/* <div className="cmn-head d-center">
                                                 <button
                                                     className="newsletter-activator box-style box-second second-alt alt-eighteen rounded-circle d-center box-area box-one"
                                                     type="button"
@@ -186,7 +158,7 @@ const CommonHeader = () => {
 
                                                     </span>
                                                 </button>
-                                            </div>
+                                            </div> */}
                                             <div className="nav-items-wrapper d-flex flex-column p-4 p-sm-7 justify-content-center position-fixed top-0 end-0 bottom-0 w-100 n2-bg-color">
                                                 <button className="position-absolute close-btn d-center gap-1">
                                                     <span>CLOSE</span>
@@ -196,7 +168,7 @@ const CommonHeader = () => {
                                                 </button>
                                                 <div className="nav-items text-center d-grid gap-8 gap-md-15">
                                                     <Link
-                                                         to={'/'}
+                                                        to={'/'}
                                                         className="nav-brand-area d-center gap-2"
                                                     >
                                                         <span className="d-center">
@@ -207,6 +179,7 @@ const CommonHeader = () => {
                                                                 src={images.logo}
                                                                 className="logo"
                                                                 alt="logo"
+                                                                style={{ width: '100px', margin: '0px 10px' }}
                                                             />
                                                         </span>
                                                     </Link>
