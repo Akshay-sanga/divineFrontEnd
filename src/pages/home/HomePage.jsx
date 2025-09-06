@@ -396,10 +396,12 @@ const HomePage = () => {
 
 
               <div className="col-lg-6" >
-                <div className="swiper testimonial-carousel">
+
+
+                {/* <div className="swiper testimonial-carousel">
                   <div className="swiper-wrapper">
 
-                    {/* Testimonial slider */}
+              
 
                     {
                       loading ? (
@@ -417,7 +419,7 @@ const HomePage = () => {
                                     <a href="javascript:void(0)">
                                       <h5 className="mb-1 n2-color">{item.name}</h5>
                                     </a>
-                                    {/* <span className="n3-color fs-ten">CEO, Tech Founder</span> */}
+                                  
                                   </div>
                                   <ul className="d-center justify-content-end mb-2 ms-4">
                                     <li className="rounded-circle ms-n4">
@@ -449,7 +451,54 @@ const HomePage = () => {
 
 
                   </div>
-                </div>
+                </div> */}
+                <Swiper
+                  modules={[Autoplay]}
+
+                  loop={true}
+                  autoplay={{
+                    delay: 2000, // slide every 2.5s
+                    disableOnInteraction: false, // keep autoplay after user interaction
+                  }}
+                  className="testimonial-carousel"
+                >
+                  {loading ? (
+                    <p>Content is loading. Please wait...</p>
+                  ) : seasontestimonial && seasontestimonial.length > 0 ? (
+                    seasontestimonial.map((item, index) => (
+                      <SwiperSlide key={index} style={{ padding: '0px 20px' }}>
+                        <div className="single-item reveal-object object-two">
+                          <div className="box-area">
+                            <img src="assets/images/icon/quote-icon.webp" alt="image" />
+                          </div>
+                          <div className="d-center flex-wrap gap-4 justify-content-between">
+                            <div className="text-area">
+                              <h5 className="mb-1 n2-color">{item.name}</h5>
+                            </div>
+                            <ul className="d-center justify-content-end mb-2 ms-4">
+                              <li className="rounded-circle ms-n4">
+                                <img
+                                  style={{ width: "60px", height: "60px" }}
+                                  className="cus-border border border-2 b-fifth rounded-circle"
+                                  src={item.image}
+                                  alt="Profile"
+                                />
+                              </li>
+                            </ul>
+                          </div>
+                          <div
+                            className="n3-color fw-mid fs-five my-6 my-md-10"
+                            dangerouslySetInnerHTML={{ __html: item.desp }}
+                          />
+                        </div>
+                      </SwiperSlide>
+                    ))
+                  ) : (
+                    <p>No testimonials available</p>
+                  )}
+                </Swiper>
+
+
                 <span className="position-relative d-center cus-border border-bottom b-second" />
                 <div className="slider-btn w-100 gap-2 gap-md-3 d-center justify-content-start mt-6 mt-md-10 position-relative">
                   <button

@@ -71,37 +71,38 @@ const AuditionFormPage = () => {
       const res = await dispatch(getAppliedseasonslicedata(form)).unwrap();
       console.log('res on apply screen', res)
       if (res.status_code == 200) {
-          if (filterseason?.season_paid_type === "paid") {
-            openRazorpay(res);
-            toast.success(res.message, {
-              position: "top-right",
-              autoClose: 3000,
-              hideProgressBar: false,
-              pauseOnHover: true,
-              draggable: true,
-            });
-          }
-          else {
-            filterseason?.season_paid_type === "free" && toast.success("You are registered Successfully");
-            toast.success(res.message, {
-              position: "top-right",
-              autoClose: 3000,
-              hideProgressBar: false,
-              pauseOnHover: true,
-              draggable: true,
-            });
-          }
+        if (filterseason?.season_paid_type === "paid") {
+          openRazorpay(res);
+          toast.success(res.message, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            pauseOnHover: true,
+            draggable: true,
+          });
+        }
+        else {
+          filterseason?.season_paid_type === "free";
+          toast.success(res.message, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            pauseOnHover: true,
+            draggable: true,
+          });
+        }
 
-        
 
-        setForm({
+
+        setForm((prev) => ({
+          ...prev, // keep season_name & any other untouched fields
           name: "",
           phone: "",
           email: "",
           gender: "",
           city: "",
-        });
-      
+        }));
+
       }
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -152,7 +153,7 @@ const AuditionFormPage = () => {
       console.error("Razorpay SDK not loaded.");
       return;
     }
-  
+
     const options = {
       key: res?.keyId,
       amount: res?.amount,            // amount in paise (₹100 = 10000)
@@ -161,7 +162,7 @@ const AuditionFormPage = () => {
       description: "Test Transaction",
       order_id: res?.orderId,
       image: "https://www.hunarsangeetmahavidyalaya.com/static/media/Hunar-Sangeet-Mahavidyalaya.cad45e9fffc3878e9dfc.png",
-  
+
       // SUCCESS handler
       handler: function (paymentResponse) {
         console.log("Payment success:", paymentResponse);
@@ -172,20 +173,20 @@ const AuditionFormPage = () => {
         });
         // You can also show a toast or navigate to a success page here
       },
-  
+
       prefill: {
         name: res?.name || "",
         email: res?.email || "",
         contact: res?.phone || "",
       },
-  
+
       theme: {
         color: "#3399cc",
       },
     };
-  
+
     const rzp1 = new window.Razorpay(options);
-  
+
     // FAILURE handler
     rzp1.on("payment.failed", function (response) {
       console.error("Payment failed:", response.error);
@@ -194,13 +195,13 @@ const AuditionFormPage = () => {
       // Optional: send details to your backend for logging
       // fetch("/api/payment-failed", { method: "POST", body: JSON.stringify(response.error) });
     });
-  
+
     rzp1.open();
   };
-  
 
-   // Payment Varify Function
-   const paymentverify = async (paymentinfo) => {
+
+  // Payment Varify Function
+  const paymentverify = async (paymentinfo) => {
     try {
       const response = await dispatch(
         PaymentVarifyDataFetchSlice(paymentinfo)
@@ -274,15 +275,15 @@ const AuditionFormPage = () => {
             <div className="col-lg-12 d-grid gap-4 gap-md-6 mt-3">
               <div className="form-area box-shadow-p1 n1-bg-color rounded-4 d-grid gap-3 gap-md-4 px-3 px-md-8 py-5 py-md-8">
                 <form className="row gy-4 gy-md-6" action="#" onSubmit={handleSubmit}>
-                      <input type="hidden" name="season_id"  value={filterseason?.season_id || ''} onChange={(e) =>
-                            setForm({ ...form, season_id: e.target.value })
-                          } />
-                      <input type="hidden" name="season_paid_type"  value={filterseason?.season_paid_type || ''} onChange={(e) =>
-                            setForm({ ...form, season_id: e.target.value })
-                          } />
-                      <input type="hidden" name="season_amount"  value={filterseason?.season_amount || ''} onChange={(e) =>
-                            setForm({ ...form, season_amount: e.target.value })
-                          } />
+                  <input type="hidden" name="season_id" value={filterseason?.season_id || ''} onChange={(e) =>
+                    setForm({ ...form, season_id: e.target.value })
+                  } />
+                  <input type="hidden" name="season_paid_type" value={filterseason?.season_paid_type || ''} onChange={(e) =>
+                    setForm({ ...form, season_id: e.target.value })
+                  } />
+                  <input type="hidden" name="season_amount" value={filterseason?.season_amount || ''} onChange={(e) =>
+                    setForm({ ...form, season_amount: e.target.value })
+                  } />
 
                   <div className="col-md-6">
                     <div className="single-box d-grid gap-1">
