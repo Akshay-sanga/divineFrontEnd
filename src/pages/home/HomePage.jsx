@@ -454,20 +454,21 @@ const HomePage = () => {
                 </div> */}
                 <Swiper
                   modules={[Autoplay]}
-
+                  spaceBetween={30}
                   loop={true}
                   autoplay={{
                     delay: 2000, // slide every 2.5s
                     disableOnInteraction: false, // keep autoplay after user interaction
                   }}
+                  style={{ padding: '30px' }}
                   className="testimonial-carousel"
                 >
                   {loading ? (
                     <p>Content is loading. Please wait...</p>
                   ) : seasontestimonial && seasontestimonial.length > 0 ? (
                     seasontestimonial.map((item, index) => (
-                      <SwiperSlide key={index} style={{ padding: '0px 20px' }}>
-                        <div className="single-item reveal-object object-two">
+                      <SwiperSlide key={index} style={{ width: '100%' }}>
+                        <div className="single-item reveal-object object-two" >
                           <div className="box-area">
                             <img src="assets/images/icon/quote-icon.webp" alt="image" />
                           </div>
