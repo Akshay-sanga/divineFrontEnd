@@ -11,6 +11,7 @@ const AuditionFormPage = () => {
   const [homeData, setHomeData] = useState(null);
   const [filterseason, setFilterSeason] = useState(null);
   const navigate = useNavigate();
+  const [submitting, setSubmitting] = useState(false); // ✅ new state
   const [form, setForm] = useState({
     season_id: '',
     season_exist: '',
@@ -63,13 +64,93 @@ const AuditionFormPage = () => {
 
 
   // Your submit handler
+  //   const handleSubmit = async (e) => {
+  //     e.preventDefault();
+  //     console.log('form', form)
+  // setSubmitting(true);  
+  //     try {
+  //       const res = await dispatch(getAppliedseasonslicedata(form)).unwrap();
+  //       console.log('res on apply screen', res)
+  //       if (res.status_code == 200) {
+  //         if (filterseason?.season_paid_type === "paid") {
+  //           openRazorpay(res);
+  //           toast.success(res.message, {
+  //             position: "top-right",
+  //             autoClose: 3000,
+  //             hideProgressBar: false,
+  //             pauseOnHover: true,
+  //             draggable: true,
+  //           });
+  //         }
+  //         else {
+  //           filterseason?.season_paid_type === "free";
+  //           toast.success(res.message, {
+  //             position: "top-right",
+  //             autoClose: 3000,
+  //             hideProgressBar: false,
+  //             pauseOnHover: true,
+  //             draggable: true,
+  //           });
+  //         }
+
+
+
+  //         setForm((prev) => ({
+  //           ...prev, // keep season_name & any other untouched fields
+  //           name: "",
+  //           phone: "",
+  //           email: "",
+  //           gender: "",
+  //           city: "",
+  //         }));
+
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+
+  //       const errors = error.errors;
+
+  //       if (errors) {
+  //         if (errors.email && errors.email[0]) {
+  //           toast.error(errors.email[0], {
+  //             position: "top-right",
+  //             autoClose: 3000,
+  //             hideProgressBar: false,
+  //             pauseOnHover: true,
+  //             draggable: true,
+  //           });
+  //         } else if (errors.gender && errors.gender[0]) {
+  //           toast.error(errors.gender[0], {
+  //             position: "top-right",
+  //             autoClose: 3000,
+  //             hideProgressBar: false,
+  //             pauseOnHover: true,
+  //             draggable: true,
+  //           });
+  //         }
+  //       } else {
+  //         toast.error(error.message || "Something went wrong!", {
+  //           position: "top-right",
+  //           autoClose: 3000,
+  //           hideProgressBar: false,
+  //           pauseOnHover: true,
+  //           draggable: true,
+  //         });
+  //       }
+  //     }
+
+  //   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('form', form)
+    console.log('form', form);
+
+    setSubmitting(true);  // ✅ start loader
 
     try {
       const res = await dispatch(getAppliedseasonslicedata(form)).unwrap();
-      console.log('res on apply screen', res)
+      console.log('res on apply screen', res);
+
       if (res.status_code == 200) {
         if (filterseason?.season_paid_type === "paid") {
           openRazorpay(res);
@@ -80,9 +161,7 @@ const AuditionFormPage = () => {
             pauseOnHover: true,
             draggable: true,
           });
-        }
-        else {
-          filterseason?.season_paid_type === "free";
+        } else {
           toast.success(res.message, {
             position: "top-right",
             autoClose: 3000,
@@ -92,53 +171,33 @@ const AuditionFormPage = () => {
           });
         }
 
-
-
         setForm((prev) => ({
-          ...prev, // keep season_name & any other untouched fields
+          ...prev, // keep season info
           name: "",
           phone: "",
           email: "",
           gender: "",
           city: "",
         }));
-
       }
     } catch (error) {
       console.error("Error fetching data:", error);
 
       const errors = error.errors;
-
       if (errors) {
         if (errors.email && errors.email[0]) {
-          toast.error(errors.email[0], {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            pauseOnHover: true,
-            draggable: true,
-          });
+          toast.error(errors.email[0]);
         } else if (errors.gender && errors.gender[0]) {
-          toast.error(errors.gender[0], {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            pauseOnHover: true,
-            draggable: true,
-          });
+          toast.error(errors.gender[0]);
         }
       } else {
-        toast.error(error.message || "Something went wrong!", {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          pauseOnHover: true,
-          draggable: true,
-        });
+        toast.error(error.message || "Something went wrong!");
       }
+    } finally {
+      setSubmitting(false);  // ✅ stop loader (success or error)
     }
-
   };
+
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -436,14 +495,23 @@ const AuditionFormPage = () => {
 
 
                   <p style={{ display: 'flex', gap: '5px' }}>If you have already user id & password then
-                    <Link to="https://test.hunardvi.com/user-login" style={{ color: 'blue' }}>
+                    <Link to="https://testhunar.rsmsgnr.com/user-login" style={{ color: 'blue' }}>
                       Log in
                     </Link>
                   </p>
                   <div className="col-md-12">
-                    <button className="box-style box-second first-alt transition d-center py-2 py-md-3 px-4 px-md-6 w-100">
-                      <span className="fs-eight fw-semibold">Apply Now</span>
+                    <button
+                      type="submit"
+                      disabled={submitting}   // ✅ disable button while loading
+                      className="box-style box-second first-alt transition d-center py-2 py-md-3 px-4 px-md-6 w-100"
+                    >
+                      {submitting ? (
+                        <span className="fs-eight fw-semibold">⏳ Please wait...</span>
+                      ) : (
+                        <span className="fs-eight fw-semibold">Apply Now</span>
+                      )}
                     </button>
+
                   </div>
                 </form>
               </div>

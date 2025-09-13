@@ -174,7 +174,7 @@ const ContactPage = () => {
                                             <span className="n2-color">Call Us</span>
                                         </div>
                                         <a href="tel:9350065004" className="">
-                                            +91 93 5006 5004
+                                            +91 72 9001 9009
                                         </a>
                                         {/* <p className="n3-color">Monday -&gt; Saturday 9AM to 10PM</p> */}
                                     </div>

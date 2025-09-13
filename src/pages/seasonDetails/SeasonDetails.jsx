@@ -3,7 +3,11 @@ import { useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom'
 import ImageGallery from 'react-image-gallery' // Assuming you're using this library
 import "react-image-gallery/styles/css/image-gallery.css";
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 import { getallgallerydataslice, getallvideodataslice, getseasondetailsdataslice, getseasontestimonialdataslice } from '../../redux/UserSlice';
 import { CaretLeft, CaretRight, Microphone, Plus, Star } from 'phosphor-react';
 import limitHtmlWords from '../../utils/Htmlwordlimit';
@@ -183,107 +187,107 @@ const SeasonDetails = () => {
       {/* Event Section end */}
       {/* Winners start */}
       {
-        seasontestimonial.length > 0 && (
-      <section className="team-section s1-bg-color pt-120 pb-120">
-        <div className="container">
-          <div className="row justify-content-center text-center">
-            <div className="col-lg-6">
-              <div className="section-area mb-8 mb-md-15 d-grid gap-3 gap-md-4  reveal-text text-three">
-                <span className="p6-color fw-semibold">Winners</span>
-                <h2 className="fs-two">Our Winners</h2>
+        winnersData?.length > 0 && (
+          <section className="team-section s1-bg-color pt-120 pb-120">
+            <div className="container">
+              <div className="row justify-content-center text-center">
+                <div className="col-lg-6">
+                  <div className="section-area mb-8 mb-md-15 d-grid gap-3 gap-md-4  reveal-text text-three">
+                    <span className="p6-color fw-semibold">Winners</span>
+                    <h2 className="fs-two">Our Winners</h2>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="row cus-row gy-7 gy-xl-8 justify-content-center justify-content-sm-start">
-            {
-              loading ? (
-                <p>Loading...</p>
-              ) : (
-                winnersData && winnersData?.length > 0 ? (
-                  winnersData.map((item, index) => (
+              <div className="row cus-row gy-7 gy-xl-8 justify-content-center justify-content-sm-start">
+                {
+                  loading ? (
+                    <p>Loading...</p>
+                  ) : (
+                    winnersData && winnersData?.length > 0 ? (
+                      winnersData.map((item, index) => (
 
-                    <div className="col-8 col-sm-6 col-lg-4" key={index}>
-                      <div className="single-item d-grid gap-3 gap-xl-4 position-relative">
-                        <div className="image-area d-center position-relative">
-                          <img
-                            src={item.image}
-                            className="w-100 pe-none"
-                            alt="image"
-                          />
-                          <ul className="d-center hover-active d-grid justify-content-start position-absolute top-0 end-0 m-3 m-md-4 gap-1 gap-md-1 social-area transition">
-                            <li>
-                              <a
-                                href="https://www.facebook.com/"
-                                aria-label="Facebook"
-                                className="d-center rounded-circle single-item transition"
-                              >
-                                <span className="d-center fs-six n1-color">
-                                  <i className="fab fa-facebook-f" />
+                        <div className="col-8 col-sm-6 col-lg-4" key={index}>
+                          <div className="single-item d-grid gap-3 gap-xl-4 position-relative">
+                            <div className="image-area d-center position-relative">
+                              <img
+                                src={item.image}
+                                className="w-100 pe-none"
+                                alt="image"
+                              />
+                              <ul className="d-center hover-active d-grid justify-content-start position-absolute top-0 end-0 m-3 m-md-4 gap-1 gap-md-1 social-area transition">
+                                <li>
+                                  <a
+                                    href="https://www.facebook.com/"
+                                    aria-label="Facebook"
+                                    className="d-center rounded-circle single-item transition"
+                                  >
+                                    <span className="d-center fs-six n1-color">
+                                      <i className="fab fa-facebook-f" />
+                                    </span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a
+                                    href="https://twitter.com/"
+                                    aria-label="Twitter"
+                                    className="d-center rounded-circle single-item transition"
+                                  >
+                                    <span className="d-center fs-six n1-color">
+                                      <i className="fab fa-twitter" />
+                                    </span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a
+                                    href="https://www.instagram.com/"
+                                    aria-label="Instagram"
+                                    className="d-center rounded-circle single-item transition"
+                                  >
+                                    <span className="d-center fs-six n1-color">
+                                      <i className="fab fa-instagram" />
+                                    </span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a
+                                    href="https://www.youtube.com/"
+                                    aria-label="youtube"
+                                    className="d-center rounded-circle single-item transition"
+                                  >
+                                    <span className="d-center fs-six n1-color">
+                                      <i className="fa-brands fa-youtube" />
+                                    </span>
+                                  </a>
+                                </li>
+                              </ul>
+                              <span className="box-style box-second second-alt m-4 m-md-6 transition rounded-pill n1-bg-color d-center gap-2 py-1 py-md-2 px-3 px-md-4 position-absolute bottom-0 end-0">
+                                <span className="d-center fs-four n1-color">
+                                  {/* <i className="ph ph-microphone" /> */}
+                                  <Star size={24} weight="bold" color="#000" />
                                 </span>
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                href="https://twitter.com/"
-                                aria-label="Twitter"
-                                className="d-center rounded-circle single-item transition"
-                              >
-                                <span className="d-center fs-six n1-color">
-                                  <i className="fab fa-twitter" />
-                                </span>
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                href="https://www.instagram.com/"
-                                aria-label="Instagram"
-                                className="d-center rounded-circle single-item transition"
-                              >
-                                <span className="d-center fs-six n1-color">
-                                  <i className="fab fa-instagram" />
-                                </span>
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                href="https://www.youtube.com/"
-                                aria-label="youtube"
-                                className="d-center rounded-circle single-item transition"
-                              >
-                                <span className="d-center fs-six n1-color">
-                                  <i className="fa-brands fa-youtube" />
-                                </span>
-                              </a>
-                            </li>
-                          </ul>
-                          <span className="box-style box-second second-alt m-4 m-md-6 transition rounded-pill n1-bg-color d-center gap-2 py-1 py-md-2 px-3 px-md-4 position-absolute bottom-0 end-0">
-                            <span className="d-center fs-four n1-color">
-                              {/* <i className="ph ph-microphone" /> */}
-                              <Star size={24} weight="bold" color="#000" />
-                            </span>
-                            <span className="fs-seven">Rank : {item.rank}</span>
-                          </span>
-                        </div>
-                        <div className="text-area">
-                          <Link to={'#'}>
-                            <h5 className="mb-2 n2-color">{item.name}</h5>
-                          </Link>
-                          {/* <span className="n3-color fw-bold fs-nine">
+                                <span className="fs-seven">Rank : {item.rank}</span>
+                              </span>
+                            </div>
+                            <div className="text-area">
+                              <Link to={'#'}>
+                                <h5 className="mb-2 n2-color">{item.name}</h5>
+                              </Link>
+                              {/* <span className="n3-color fw-bold fs-nine">
                             Director of Sales
                           </span> */}
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                  ))
-                ) : (
-                  <p>Data not available</p>
-                )
-              )
-            }
+                      ))
+                    ) : (
+                      <p>Data not available</p>
+                    )
+                  )
+                }
 
-          </div>
-        </div>
-      </section>
+              </div>
+            </div>
+          </section>
         )}
       {/* Winners end */}
       {/* Gallery Section start */}
@@ -418,7 +422,7 @@ const SeasonDetails = () => {
                 <div className="col-lg-6">
                   <div className="section-area mb-8 mb-md-15 d-grid gap-3 gap-md-4  reveal-text text-three">
                     <span className="p6-color fw-semibold">TESTIMONIAL</span>
-                    <h2 className="fs-two">Attendee Reviews</h2>
+                    <h2 className="fs-two">Reviews</h2>
                   </div>
                 </div>
               </div>
@@ -430,82 +434,60 @@ const SeasonDetails = () => {
                     <div className="swiper-wrapper">
 
                       {/* Testimonial slider */}
-                      {
-                        loading ? (
+                      <Swiper
+                        modules={[Autoplay]}
+                        spaceBetween={30}
+                        loop={true}
+                        autoplay={{
+                          delay: 2000, // slide every 2.5s
+                          disableOnInteraction: false, // keep autoplay after user interaction
+                        }}
+                        style={{ padding: '30px' }}
+                        className="testimonial-carousel"
+                      >
+                        {loading ? (
                           <p>Content is loading. Please wait...</p>
-                        ) : (
-                          seasontestimonial && seasontestimonial.length > 0 ? (
-                            seasontestimonial.map((item, index) => (
-                              <div className="swiper-slide" key={`${index}-testimonial`}>
-                                <div className="single-item  reveal-object object-two">
-                                  <div className="box-area">
-                                    <img src={icon.qouteIcon} alt="image" />
-                                  </div>
-                                  <div className="d-center flex-wrap gap-4 justify-content-between">
-                                    <div className="text-area">
-                                      <a href="javascript:void(0)">
-                                        <h5 className="mb-1 n2-color">{item.name}</h5>
-                                      </a>
-                                      {/* <span className="n3-color fs-ten">CEO, Tech Founder</span> */}
-                                    </div>
-                                    <ul className="d-center justify-content-end mb-2 ms-4">
-                                      <li className="rounded-circle ms-n4">
-                                        <img
-                                          className="cus-border border border-2 b-fifth rounded-circle" style={{ width: '60px', height: '60px' }}
-                                          src={item?.front_image}
-                                          alt="Profile"
-                                        />
-                                      </li>
-
-                                    </ul>
-                                  </div>
-
-
-                                  <div className="n3-color fw-mid fs-five my-6 my-md-10"
-                                    dangerouslySetInnerHTML={{
-                                      __html: item.desp,
-                                    }}
-                                  />
+                        ) : seasontestimonial && seasontestimonial.length > 0 ? (
+                          seasontestimonial.map((item, index) => (
+                            <SwiperSlide key={index} style={{ width: '100%' }}>
+                              <div className="single-item reveal-object object-two" >
+                                <div className="box-area">
+                                  <img src="assets/images/icon/quote-icon.webp" alt="image" />
                                 </div>
+                                <div className="d-center flex-wrap gap-4 justify-content-between">
+                                  <div className="text-area">
+                                    <h5 className="mb-1 n2-color">{item.name}</h5>
+                                  </div>
+                                  <ul className="d-center justify-content-end mb-2 ms-4">
+                                    <li className="rounded-circle ms-n4">
+                                      <img
+                                        style={{ width: "60px", height: "60px" }}
+                                        className="cus-border border border-2 b-fifth rounded-circle"
+                                        src={item?.front_image}
+                                        alt="Profile"
+                                      />
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div
+                                  className="n3-color fw-mid fs-five my-6 my-md-10"
+                                  dangerouslySetInnerHTML={{ __html: item.desp }}
+                                />
                               </div>
-
-                            ))
-                          ) : (
-                            <p>No testimonials available</p>
+                            </SwiperSlide>
                           ))
-                      }
+                        ) : (
+                          <p>No testimonials available</p>
+                        )}
+                      </Swiper>
+
 
 
                     </div>
                   </div>
+
                   <span className="position-relative d-center cus-border border-bottom b-second" />
-                  <div className="slider-btn w-100 gap-2 gap-md-3 d-center justify-content-start mt-6 mt-md-10 position-relative">
-                    <button
-                      type="button"
-                      aria-label="Previous slide"
-                      className="ara-prev position-relative cus-border border b-fourth box-area box-one box-style box-second second-alt d-center slide-button"
-                    >
-                      <span className="fs-five d-center">
-                        <i className="ph ph-caret-left" />
-                        <CaretLeft size={24} weight="bold" />
-                      </span>
-                    </button>
-                    <button
-                      type="button"
-                      aria-label="Next slide"
-                      className="ara-next position-relative cus-border border b-fourth box-area box-one box-style box-second second-alt d-center slide-button"
-                    >
-                      <span className="fs-five d-center">
-                        <CaretRight size={24} weight="bold" />
-                        {/* <i className="ph ph-caret-right" /> */}
-                      </span>
-                    </button>
-                    <div className="abs-area pe-none d-center w-100">
-                      <div className="item position-absolute shape-animation d-none d-lg-block">
-                        <img src={shape.reviewshape2} alt="icon" />
-                      </div>
-                    </div>
-                  </div>
+
                 </div>
 
 
@@ -516,16 +498,7 @@ const SeasonDetails = () => {
                     style={{ backgroundSize: 'cover', backgroundPosition: 'center', backgroundImage: `url(${images.videobg2})` }}
                   >
                     <div className="py-20 my-10 my-md-20">
-                      {/* <div className="video-bg-thumb second d-center position-absolute">
-                      <a
-                        href="https://www.youtube.com/watch?v=BHACKCNDMW8"
-                        className="popup-video btn-popup-animation transition position-absolute z-1 d-center rounded-circle"
-                      >
-                        <span className="d-center fs-four p6-color z-1">
-                          <i className="fa-solid fa-play" />
-                        </span>
-                      </a>
-                    </div> */}
+
                     </div>
                   </div>
                 </div>
@@ -534,62 +507,7 @@ const SeasonDetails = () => {
           </section>
         )
       }
-      {/* TESTIMONIAL end */}
-      {/* Faq Section start */}
-      {/* {
-        faqData.length > 0 && (
 
-          <section className="cmn-faq faq-section s1-bg-color pt-120 pb-120">
-            <div className="container">
-              <div className="row gy-0 justify-content-between align-items-center">
-                <div className="col-lg-6 ps-3 ps-xl-20">
-                  <div className="section-area mb-6 mb-md-10 d-grid gap-3 gap-md-4  text-three">
-                    <span className="p6-color fw-semibold">FAQs</span>
-                    <h2 className="fs-two">Frequently Asked Questions</h2>
-                  </div>
-                  <div className="img-area transition rounded-circle faq-shape">
-                    <img src={shape.faqshape3} alt="user" />
-                  </div>
-                </div>
-                <div className="col-lg-6 order-1 order-lg-0">
-                  {
-                    loading ? (
-                      <p>Loading...</p>
-                    ) : (
-                      faqData && faqData?.length > 0 ? (
-                        faqData.map((item, index) => (
-                          <div key={index} className="accordion-single fourth position-relative d-grid flex-column s1-bg-color py-4 py-md-6 px-4 px-md-6 active">
-                            <h5 className="header-area">
-                              <button
-                                className="accordion-btn text-start n2-color fw-bold d-flex align-items-center position-relative w-100"
-                                type="button"
-                              >
-                                {item.question}
-                                <Plus size={24} weight="bold" style={{ position: 'absolute', right: 0 }} />
-                              </button>
-                            </h5>
-                            <div className="content-area z-1">
-                              <div className="content-body pt-3 pt-md-4">
-                                <p className="n3-color">
-                                  {item.answer}
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        ))
-                      ) : (
-                        <p>Data not available</p>
-                      )
-                    )
-                  }
-
-                
-                </div>
-              </div>
-            </div>
-          </section>
-        )
-      } */}
       {
         faqData.length > 0 && (
 

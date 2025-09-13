@@ -22,6 +22,7 @@ const HomePage = () => {
   const [season, setSeason] = useState([]);
   const [slider, setSlider] = useState([]);
   const [artist, setArtist] = useState([]);
+  const [introVideoThumbnail, setIntroVideoThumbnail] = useState([]);
   const [filterseason, setFilterSeason] = useState(null);
   const [seasontestimonial, setSeasonTestimonial] = useState([]);
 
@@ -33,6 +34,11 @@ const HomePage = () => {
         const sliderData = response.slider;
         setSlider(sliderData);
         const filterData = response.season.filter((item) => item.type === 'new')
+
+        const thumbnail = filterData[0]?.intro_video_thumbnail;
+        console.log('thumbnail', thumbnail)
+        setIntroVideoThumbnail(thumbnail)
+
         setHomeData(response);
         const descSeason = response.season.slice().reverse();
         setSeason(descSeason);
@@ -82,7 +88,7 @@ const HomePage = () => {
     setLoading(true);
     try {
       const response = await dispatch(getseasontestimonialdataslice()).unwrap();
-      console.log('Season Testimonial Response', response.data)
+
       if (response.status === 200) {
         setSeasonTestimonial(response.data);
       } else {
@@ -202,7 +208,7 @@ const HomePage = () => {
               <div className="image-area circle-text-bg d-center position-relative">
                 <div className=" object-one">
                   <img
-                    src="assets/images/about-us-img-1.webp"
+                    src={images.about1}
                     className="w-100 mt-6 mt-lg-20 ms-4 ms-lg-20 circle-img"
                     alt="image"
                   />
@@ -214,7 +220,7 @@ const HomePage = () => {
 
               <div className=" reveal-overlay first-item">
                 <img
-                  src="assets/images/about-us-img-2.webp"
+                  src={images.about2}
                   className="w-100"
                   alt="img"
                 />
@@ -352,7 +358,7 @@ const HomePage = () => {
           <div className="container-fluid px-0">
             <div
               className="img-area d-center position-relative pt-120 pb-120"
-              style={{ backgroundSize: 'cover', backgroundPosition: 'center', backgroundImage: `url(${images.videobg1})` }}
+              style={{ backgroundSize: 'cover', backgroundPosition: 'center', backgroundImage: `url(${introVideoThumbnail})` }}
             >
               <div className="py-20 my-10 my-md-20">
                 <div className="video-bg-thumb d-center position-absolute">
@@ -398,60 +404,7 @@ const HomePage = () => {
               <div className="col-lg-6" >
 
 
-                {/* <div className="swiper testimonial-carousel">
-                  <div className="swiper-wrapper">
 
-              
-
-                    {
-                      loading ? (
-                        <p>Content is loading. Please wait...</p>
-                      ) : (
-                        seasontestimonial && seasontestimonial.length > 0 ? (
-                          seasontestimonial.map((item, index) => (
-                            <div className="swiper-slide" key={`${index}-testimonial`}>
-                              <div className="single-item  reveal-object object-two">
-                                <div className="box-area">
-                                  <img src="assets/images/icon/quote-icon.webp" alt="image" />
-                                </div>
-                                <div className="d-center flex-wrap gap-4 justify-content-between">
-                                  <div className="text-area">
-                                    <a href="javascript:void(0)">
-                                      <h5 className="mb-1 n2-color">{item.name}</h5>
-                                    </a>
-                                  
-                                  </div>
-                                  <ul className="d-center justify-content-end mb-2 ms-4">
-                                    <li className="rounded-circle ms-n4">
-                                      <img
-                                        style={{ width: '60px', height: '60px' }}
-                                        className="cus-border border border-2 b-fifth rounded-circle"
-                                        src={item.image}
-                                        alt="Profile"
-                                      />
-                                    </li>
-
-                                  </ul>
-                                </div>
-
-
-                                <div className="n3-color fw-mid fs-five my-6 my-md-10"
-                                  dangerouslySetInnerHTML={{
-                                    __html: item.desp,
-                                  }}
-                                />
-                              </div>
-                            </div>
-
-                          ))
-                        ) : (
-                          <p>No testimonials available</p>
-                        ))
-                    }
-
-
-                  </div>
-                </div> */}
                 <Swiper
                   modules={[Autoplay]}
                   spaceBetween={30}
@@ -534,20 +487,11 @@ const HomePage = () => {
               <div className="col-lg-6">
                 <div
                   className="img-area d-center position-relative pt-120 pb-120"
-                  data-bg="./assets/images/video-bg-2.webp"
-                  style={{ backgroundSize: 'cover', backgroundPosition: 'center', backgroundImage: 'url(./assets/images/video-bg-2.webp)' }}
+                  data-bg={images.testimonial}
+                  style={{ backgroundSize: 'cover', backgroundPosition: 'center', backgroundImage: `url(${images.testimonial})` }}
                 >
                   <div className="py-20 my-10 my-md-20">
-                    {/* <div className="video-bg-thumb second d-center position-absolute">
-                      <a
-                        href="https://www.youtube.com/watch?v=BHACKCNDMW8"
-                        className="popup-video btn-popup-animation transition position-absolute z-1 d-center rounded-circle"
-                      >
-                        <span className="d-center fs-four p6-color z-1">
-                          <i className="fa-solid fa-play" />
-                        </span>
-                      </a>
-                    </div> */}
+
                   </div>
                 </div>
               </div>

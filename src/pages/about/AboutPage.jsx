@@ -3,6 +3,7 @@ import { getallartistdataslice, getalldataslice, getallpromotedartistdataslice, 
 import { useDispatch } from 'react-redux';
 import limitHtmlWords from '../../utils/Htmlwordlimit';
 import { Link } from 'react-router-dom';
+import { images } from '../../../public/assets/images/images';
 
 const AboutPage = () => {
     const [artist, setArtist] = useState([]);
@@ -207,7 +208,7 @@ const AboutPage = () => {
                             <div className="image-area circle-text-bg d-center position-relative">
                                 <div className=" object-one">
                                     <img
-                                        src="assets/images/about-us-img-1.webp"
+                                        src={images.about1}
                                         className="w-100 mt-6 mt-lg-20 ms-4 ms-lg-20 circle-img"
                                         alt="image"
                                     />
@@ -219,7 +220,7 @@ const AboutPage = () => {
 
                             <div className=" reveal-overlay first-item">
                                 <img
-                                    src="assets/images/about-us-img-2.webp"
+                                    src={images.about2}
                                     className="w-100"
                                     alt="img"
                                 />
@@ -477,8 +478,8 @@ const AboutPage = () => {
                                 </div>
                                 <div className="btn-area">
                                     <Link
-                                       to={'/audition-form'}
-                                        className="box-style box-second first-alt alt-four d-center gap-2 py-2 py-md-3 px-3 px-md-6 px-xl-9" style={{  }}
+                                        to={'/audition-form'}
+                                        className="box-style box-second first-alt alt-four d-center gap-2 py-2 py-md-3 px-3 px-md-6 px-xl-9" style={{}}
                                     >
                                         <span className="fs-seven">Apply for Season</span>
                                     </Link>

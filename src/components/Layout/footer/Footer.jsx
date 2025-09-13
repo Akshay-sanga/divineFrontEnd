@@ -186,7 +186,7 @@ const Footer = () => {
                       <Phone />
                     </span>
                     <a href="tel:9350065004" className="n1-color">
-                      +91 93 5006 5004
+                      +91 72 9001 9009
                     </a>
                   </li>
                 </ul>
